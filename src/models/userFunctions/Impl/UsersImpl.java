@@ -16,13 +16,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class UsersImpl implements Users {
-    UsersImpl() {
+    public UsersImpl() {
         createUsers();
     }
 
-
     private UserDAO[] users;
-
 
     private UserDAO createUser(String id, String name, String path) {
         UserDAO u = new UserDAO();
@@ -86,6 +84,16 @@ public class UsersImpl implements Users {
     @Override
     public int getUsersCount() {
         return users.length;
+    }
+
+    @Override
+    public int getUserById(String id) {
+        for(int i = 0; i < getUsersCount(); i++ ){
+            if (id.compareTo(users[i].getId())==0){
+              return i;
+            }
+        }
+        return -1;
     }
 
 }
