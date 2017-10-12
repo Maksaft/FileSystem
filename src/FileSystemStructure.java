@@ -17,8 +17,7 @@ import java.io.File;
 public class FileSystemStructure {
     FileSystemStructure() {
         createStandartFolders();
-
-
+        createUsersXmlFile();
         createExtendedFolders();
     }
 
