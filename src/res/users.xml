@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user id="Maks">
+        <name> Maks</name>
+        <path> /Maks </path>
+    </user>
+    <user id="Antony">
+        <name> Antony</name>
+        <path> /Antony </path>
+    </user>
+</users>
