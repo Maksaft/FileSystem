@@ -5,26 +5,25 @@ import models.fileFunctions.FileFunction;
 import java.io.File;
 
 public class FileFunctionImpl implements FileFunction{
-    private String markAsDir(String dirName){
-        return "<b>"+dirName+"</b>";
-    }
-    private String[] getFilesFromFolder(String path){
+
+    private String[][] getFilesFromFolder(String path){
         try {
             File dir = new File(path); //path указывает на директорию
             File[] arrFiles = dir.listFiles();
-            String[] result = new String[arrFiles.length];
+            String[][] result = new String[arrFiles.length][2];
             for(int i=0; i<arrFiles.length ;i++){
+                result[i][0]= arrFiles[i].getName();
                 if (arrFiles[i].isDirectory()) {
-                    result[i]= markAsDir(arrFiles[i].getName());
+                    result[i][1]="1";
                 } else {
-                    result[i]= arrFiles[i].getName();
+                    result[i][1]="0";
                 }
             }
             return result;
         }
         catch(NullPointerException e ){
             e.printStackTrace();
-            return new String[]{"No such folder"};
+            return new String[][] {{"No such folder"},{}};
         }
     }
     protected static boolean copyFolder (String pathFrom, String pathTo){
@@ -57,7 +56,7 @@ public class FileFunctionImpl implements FileFunction{
     }
 
     @Override
-    public String showFolder(String path) {
-       return getFilesFromFolder(path).toString();
+    public String[][] showFolder(String path) {
+       return getFilesFromFolder(path);
     }
 }

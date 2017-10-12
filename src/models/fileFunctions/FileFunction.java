@@ -9,5 +9,5 @@ public interface FileFunction {
 
     public String[] search(String searchText);
 
-    public String showFolder(String path);
+    public String[][] showFolder(String path);
 }

@@ -25,7 +25,7 @@ public class UsersImpl implements Users {
     private UserDAO createUser(String id, String name, String path) {
         UserDAO u = new UserDAO();
         u.setId(id);
-        u.setName(name);
+        u.setName(MyData.USERSDIR+name);
         u.setPath(path);
         return u;
     }
@@ -94,6 +94,11 @@ public class UsersImpl implements Users {
             }
         }
         return -1;
+    }
+
+    @Override
+    public String getUserPatch(String id) {
+        return users[getUserById(id)].getPath();
     }
 
 }
